@@ -1,0 +1,38 @@
+<%- include('templates/header',{
+    page_title:"Influencer creation"
+}) %>
+<div class="container">
+  <h1 class="text-dark">Add influencer</h1>
+  <a class="btn btn-success" href="/influencer">Back to main APP</a>
+  <form action="/influencer" method="POST"> 
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" name="name">
+    </div>
+    <div class="mb-3">
+        <label for="Regions" class="form-label">Regions</label>
+        <select id="region" name="region" class="form-select" multiple>
+          <option>NW</option>
+          <option>SW</option>
+          <option>CN</option>
+          <option>EA</option>
+          <option>CS</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="Tags" class="form-label">Tags</label>
+        <select id="tags" name="tags" class="form-select" multiple>
+          <option>Tech</option>
+          <option>News</option>
+          <option>VideoGames</option>
+          <option>MakeUp</option>
+          <option>Tutorials</option>
+          <option>Hacks</option>
+        </select>
+    </div>
+    <div class="d-grid gap-2">
+        <button class="btn btn-success" type="submit">Create influencer</button>
+      </div>
+  </form>
+</div>
+<%- include('templates/footer') %>

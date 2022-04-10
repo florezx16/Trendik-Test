@@ -1,0 +1,72 @@
+<%- include('templates/header', {
+    page_title:"Influencer APP"
+}) %>
+
+<div class="container">
+  <h1 class="text-dark">Influencer APP</h1>
+  <div class="d-grid gap-2">
+    <a class="btn btn-success" href="/influencer/create">Add influencer</a>
+  </div>
+  <br>
+  <form action="/influencer" method="get">
+    <div class="col-md-12">
+      <div class="input-group">
+        <label class="input-group-text" for="inputGroupSelect01">Influencer name</label>
+        <input type="text" class="form-control" id="name" name="name">
+      </div>
+      <div class="input-group">
+        <label class="input-group-text" for="inputGroupSelect01">Regions</label>
+        <select class="form-select" id="regions" name="regions">
+          <option selected disabled>Choose...</option>
+          <option value="NW">Northwest</option>
+          <option value="SW">Southwest</option>
+          <option value="EA">East</option>
+          <option value="CS">Coast</option>
+          <option value="CN">Center</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label class="input-group-text" for="inputGroupSelect01">Tags</label>
+        <select class="form-select" id="tags" name="tags">
+          <option selected disabled>Choose...</option>
+          <option value="Tech">Tech</option>
+          <option value="News">News</option>
+          <option value="VideoGames">VideoGames</option>
+          <option value="MakeUp">MakeUp</option>
+          <option value="Tutorials">Tutorials</option>
+          <option value="Hacks">Hacks</option>
+        </select>
+      </div>
+      <div class="d-grid gap-2">
+        <button class="btn btn-primary"  type="submit">Search</button>
+      </div>
+    </div>
+  </form>
+  <br>
+  <table class="table" id="influencer_grid">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Region</th>
+        <th scope="col">Tags</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (influencer_pack.length>0) { %>
+        <% influencer_pack.forEach(element => { %>
+          <tr>
+            <th><%= element.name  %> </th>
+            <td><%= element.region %> </td>
+            <td><%= element.tags  %></td>
+          </tr>
+        <% }) %>
+      <% } %>
+    </tbody>
+   </table>
+</div>
+<%- include('templates/footer') %>
+<script type="text/javascript">
+  $(document).ready( function () {
+      $('#influencer_grid').DataTable();
+  } );
+</script>
